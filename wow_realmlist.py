@@ -14,15 +14,16 @@ mysql_localhost = "127.0.0.1"
 mysql_port = 3306
 mysql_username = "root"
 mysql_password = "password"
+log_path = "/data/nas_wow_backup/logs/sync.log"
 
 auth_db = "acore_auth"
 
 logging.basicConfig(format='[%(levelname)s][%(asctime)s]: %(message)s',
-                    filename='/data/nas_wow_backup/logs/sync.log',
+                    filename=log_path,
                     encoding='utf-8',
                     level=logging.WARNING)
 
-logHandler = handlers.RotatingFileHandler('/data/nas_wow_backup/logs/sync.log', maxBytes=5000, backupCount=2)
+logHandler = handlers.RotatingFileHandler(log_path, maxBytes=5000, backupCount=2)
 logger = logging.getLogger('sync_logs')
 logger.addHandler(logHandler)
 
